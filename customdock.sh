@@ -37,7 +37,7 @@ else
 fi
 
 #check to see if MS Teams Classic is installed
-if pkgutil --pkgs | grep  -m 1 "com.microsoft.teams" | != $new; then
+if pkgutil --pkgs | grep  -m 1 "com.microsoft.teams" | != "$new"; then
     echo "Removing Teams Classic"
     /bin/rm -rf "/Applications/Microsoft Teams classic.app"
 fi
