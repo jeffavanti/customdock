@@ -22,7 +22,7 @@ echo Running Policy 52
 
 #Clear the Dock
 echo Removing all Dock Items
-$DOCKUTIL_BINARY --remove all --no-restart
+$DOCKUTIL_BINARY --remove all --allhomes --no-restart
 
 #sleep for 2 seconds
 $sleep 5
