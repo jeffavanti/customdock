@@ -13,10 +13,11 @@ home=/home
 macOS_version=$(sw_vers -productVersion)
 monterey=12.9.9
 
-#allow jamf to finish pushing packages/policies
-$sleep 5
+#Create a log file of this script
+exec > /Users/$currentuser/docklog-intial_$(date +"%F_%H%M").txt 2>&1
 
 #cache packages
+echo Running Policy 52
 /usr/local/bin/jamf policy -id 52
 
 #Clear the Dock
