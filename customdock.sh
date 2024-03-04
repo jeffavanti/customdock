@@ -12,10 +12,12 @@ dir=/bin/mkdir
 home=/home
 macOS_version=$(sw_vers -productVersion)
 monterey=12.9.9
-msteams="(/usr/local/bin/jamf policy -id 51)"
 
 #allow jamf to finish pushing packages/policies
 $sleep 5
+
+#cache packages
+/usr/local/bin/jamf policy -id 52
 
 #Clear the Dock
 echo Removing all Dock Items
@@ -39,11 +41,6 @@ if pkgutil --pkgs | grep  -m 1 "com.microsoft.teams" | != $new; then
     /bin/rm -rf "/Applications/Microsoft Teams classic.app"
 fi
 
-#check to see if MS Teams (work or school) is installed
-if pkgutil --pkgs | grep  -m 1 "com.microsoft.teams2" | != $new; then
-    echo "Installing New Teams"
-    $msteams
-fi
 
 #Build the Dock
 $DOCKUTIL_BINARY --add '/Applications/Self Service.app' --allhomes --no-restart
